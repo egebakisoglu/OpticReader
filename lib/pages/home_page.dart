@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool answerKeyValid = false;
   bool readOpticDisabled = true;
-  // TODO answers listesi olcak
+  List<String> answers = ["A", "B", "D", "C", "E"];
 
   File? image;
 
@@ -52,10 +52,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 if (answerKeyValid){
                   // TODO answer key page için answers parametresi olcak
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnswerKeyPage()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnswerKeyPage(answers: answers)));
                 }
                 else {
-                  pickImageAndPush(ImageSource.camera, AnswerKeyPage());
+                  pickImageAndPush(ImageSource.camera, AnswerKeyPage(answers: answers));
                 }
               },
               title: "Cevap Anahtarı",

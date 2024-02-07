@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:opticreader/widgets/answers_widget.dart';
 
 class AnswerKeyPage extends StatelessWidget {
-  const AnswerKeyPage({super.key});
-  // answers parametresi olcak
+  const AnswerKeyPage({super.key, required this.answers});
+  final List<String> answers;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,12 @@ class AnswerKeyPage extends StatelessWidget {
       body: Column(
         children: [
           const Divider(indent: 30, endIndent: 30, color: Colors.black, thickness: 0.4),
-          Text("Answer Key"),
+          Wrap(
+            children: [
+              for (int i = 0; i < answers.length; i++)
+                AnswersWidget(questionNumber: i + 1, answer: answers[i]),
+            ],
+          )
         ],
       ),
     );
